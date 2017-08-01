@@ -5,6 +5,7 @@
 	/*test*/
 	baseUrl : "http://10.13.44.80:8080/JupiterLog/rest/log",
 }).run(function($http, $window) {	
+	
 	//$http.defaults.headers.common['auth_token'] =$window.sessionStorage["auth_token"]?$window.sessionStorage["auth_token"]: null;
 });
  
