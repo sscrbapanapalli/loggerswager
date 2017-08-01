@@ -1,0 +1,36 @@
+
+		<div class="" ng-controller="logController as log">
+
+				<form class="" name="login_form" role="form">
+
+				 	
+				 
+					<div class="">
+						<div class="col-sm-12">
+							<input type="submit" ng-click="log.generateToken()" class="form-button" id="submit"
+								value="Generate Token">
+						</div>
+					</div>
+					
+					<div class="">
+						<div class="col-sm-12">
+							<input type="submit" ng-click="log.saveLogJson()" class="form-button" id="submit"
+								value="Submit Json Log">
+						</div>
+					</div>
+					
+					<div class="">
+						<div class="col-sm-12">
+							<input type="submit" ng-click="log.saveLogXml()" class="form-button" id="submit"
+								value="Submit XML Log">
+						</div>
+					</div>
+					
+					<div class="">
+						<div class="col-sm-12">
+							<input type="submit" ng-click="log.expireToken()" class="form-button" id="submit"
+								value="Expire Token">
+						</div>
+					</div>
+				</form>
+			</div>
