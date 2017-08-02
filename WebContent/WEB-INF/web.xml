@@ -11,7 +11,7 @@
   </welcome-file-list>
   <filter>
     <filter-name>CORS</filter-name>
-    <filter-class>com.cmacgm.java.web.rest.CORSPlatform</filter-class>
+    <filter-class>com.cmacgm.java.web.rest.CORSFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>CORS</filter-name>
