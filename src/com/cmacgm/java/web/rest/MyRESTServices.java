@@ -7,7 +7,7 @@ public class MyRESTServices extends ResourceConfig {
 	public MyRESTServices() {
 		packages(new String[] { "com.fasterxml.jackson.jaxrs.json" });
 		packages(new String[] { "com.cmacgm.java.bean", "com.cmacgm.java.web.rest" });
-		register(com.cmacgm.java.web.rest.CORSPlatform.class);
+		register(com.cmacgm.java.web.rest.CORSFilter.class);
 
 	}
 }

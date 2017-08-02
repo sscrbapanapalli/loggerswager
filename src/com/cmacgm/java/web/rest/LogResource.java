@@ -48,7 +48,7 @@ public class LogResource {
 			if ((authTokenKey != null) && (authUser != null)) {
 				boolean authToken = demoAuthenticator.login(authTokenKey, authUser);
 				if ((loggerMessage != null) && (authToken)) {
-					generateLog(loggerMessage, response);
+					saveLog(loggerMessage, response);
 
 				}
 			}
@@ -66,7 +66,7 @@ public class LogResource {
 		response.resume(json.toString());// Response.status(Response.Status.NOT_FOUND).entity(json.toString()).build();
 	}
 
-	public void generateLog(LoggerMessage logVar, AsyncResponse response) {
+	public void saveLog(LoggerMessage logVar, AsyncResponse response) {
 		JSONObject json = new JSONObject();
 		try {
 			if ((logVar != null)) {

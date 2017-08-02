@@ -14,7 +14,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CORSPlatform implements Filter {
+public class CORSFilter implements Filter {
 
 	private static final Logger log = Logger.getAnonymousLogger();
 	private Properties configProp = new Properties();
