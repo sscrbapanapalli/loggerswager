@@ -104,7 +104,6 @@ public class LogResource {
 	@Produces({ "application/json" })
 	@ManagedAsync
 	public void generateToken(@Context HttpHeaders httpHeaders, final @Suspended AsyncResponse response) {
-
 		AuthenticatorService demoAuthenticator = AuthenticatorService.getInstance();
 		String authUser = httpHeaders.getHeaderString("username");
 		JSONObject json = new JSONObject();
@@ -116,6 +115,7 @@ public class LogResource {
 					json.put("code", Response.Status.OK.getStatusCode());
 					json.put("message", "Token is Generated");
 					json.put("auth_token", authToken);
+					Thread.sleep(5000);
 					response.resume(json.toString());
 				}
 
@@ -160,6 +160,7 @@ public class LogResource {
 				json.put("message", "Invalid Crendentails");
 
 			}
+			
 			response.resume(json.toString());
 
 		} catch (Exception ex) {
