@@ -35,7 +35,7 @@ import io.swagger.annotations.ApiResponses;
 public class LogResource {
 
 	//public static final String AUTH_TOKEN = "auth_token";
-	static final Logger emaildeskLogger = Logger.getLogger("emaildesk");
+	//static final Logger emaildeskLogger = Logger.getLogger("emaildesk");
 	static final Logger jupiterLogger = Logger.getLogger("jupiter");
 
 /*	@POST
@@ -180,15 +180,8 @@ public class LogResource {
 			if ((logVar != null)) {
 
 				Gson jsonObject = new Gson();
-				if ((logVar.getApplicationName().equalsIgnoreCase("emaildesk")) && (emaildeskLogger.isInfoEnabled())) {
-					emaildeskLogger.info(jsonObject.toJson(logVar));
-					json.put("status", "success");
-					json.put("code", Response.Status.OK.getStatusCode());
-					json.put("message", "Log Inserted");
-					response.resume(json.toString());
-
-				} else if ((logVar.getApplicationName().equalsIgnoreCase("jupiter")) && (jupiterLogger.isInfoEnabled())) {
-					jupiterLogger.info(jsonObject.toJson(logVar));
+			  if ((logVar.getApplicationName()!=null && logVar.getApplicationName()!="" && !logVar.getApplicationName().isEmpty() ) && (jupiterLogger.isInfoEnabled())) {
+					jupiterLogger.info(logVar.toString());
 					json.put("status", "success");
 					json.put("code", Response.Status.OK.getStatusCode());
 					json.put("message", "Log Inserted");

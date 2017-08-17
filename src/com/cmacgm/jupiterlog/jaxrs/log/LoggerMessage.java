@@ -153,11 +153,11 @@ public class LoggerMessage {
 	public String toString() {
 		return
 
-		"{ApplicationName:" + applicationName + ", EventStatus:" + eventStatus + ", SeverityLevel:" + severityLevel
-				+ ", EventTime:" + eventTime + ", ErrorDescription:" + errorDescription + ", ErrorCode:" + errorCode
-				+ ", IsSecurityIncident:" + isSecurityIncident + ", UrlRequested:" + urlRequested + ", MethodName:"
-				+ methodName + ", CurrentUser:" + currentUser + ", RequestedIp:" + requestedIp + ", TransactionId:"
-				+ transactionId + ", ActionMethod:" + actionMethod + ", MessageFormat:" + messageFormat
-				+ ", MessageParameters:{" + messageParameters + "}}";
+		"'ApplicationName':" + applicationName + ", 'EventStatus':" + eventStatus + ", 'SeverityLevel':" + severityLevel
+				+ ", 'EventTime':" + eventTime + ", 'ErrorDescription':" + errorDescription + ", 'ErrorCode':"
+				+ errorCode + ", 'IsSecurityIncident':" + isSecurityIncident + ", 'UrlRequested':" + urlRequested
+				+ ", 'MethodName':" + methodName + ", 'CurrentUser':" + currentUser + ", 'RequestedIp':" + requestedIp
+				+ ", 'TransactionId':" + transactionId + ", 'ActionMethod':" + actionMethod + ", 'MessageFormat':"
+				+ messageFormat + ", 'MessageParameters':" + messageParameters + "";
 	}
 }
