@@ -3,6 +3,7 @@ package com.cmacgm.jupiterlog.jaxrs.log;
 import java.io.IOException;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -197,6 +198,32 @@ public class LogResource {
 			throw new RuntimeException(ex.getMessage());
 		}
 		return response;
+	}
+
+	
+	@GET
+	@Path("pingUrl")
+	@ApiOperation(value = "pingUrl method", notes = "This should be invoked asynchronously for ping url test")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "An internal error occurred"),
+			@ApiResponse(code = 404, message = "pingUrl not working") })
+	@Produces({ MediaType.APPLICATION_JSON})
+	@ManagedAsync
+	public void pingUrl(final @Suspended AsyncResponse response) {
+		JSONObject json = new JSONObject();
+			try {		
+					json.put("status", "success");
+					json.put("code", Response.Status.OK.getStatusCode());
+					json.put("message", "Jupiter Application Running Successfully");
+					response.resume(json.toString());		
+
+		} catch (Exception ex) {
+			json.put("status", "error");
+			json.put("code", Response.Status.NOT_FOUND.getStatusCode());
+			json.put("message", "Jupiter Application Not Running");
+			response.resume(json.toString());
+			throw new RuntimeException(ex.getMessage());
+		}
+
 	}
 
 }
