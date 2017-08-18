@@ -54,11 +54,12 @@ public class CORSFilter implements javax.servlet.Filter {
 		try {
 						request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
 						response.setHeader("Access-Control-Allow-Origin","*");
-						response.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, OPTIONS, DELETE");
+						response.setHeader("Access-Control-Allow-Methods", "POST");
 						response.setHeader("Access-Control-Max-Age", "0");
 						response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-						response.setHeader("Pragma", "no-cache");
-						response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+						response.setHeader("Pragma", "no-cache");				
+					    response.setHeader("Access-Control-Allow-Credentials", "true");			
+					    response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 					/*	break;
 					}
 				}*/
