@@ -52,7 +52,7 @@ public class CORSFilter implements javax.servlet.Filter {
 
 					if (originHeader.equals(domain)) {*/
 		try {
-						//request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
+						request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
 						response.setHeader("Access-Control-Allow-Origin","*");
 						response.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, OPTIONS, DELETE");
 						response.setHeader("Access-Control-Max-Age", "0");
