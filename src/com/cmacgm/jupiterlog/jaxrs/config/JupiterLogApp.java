@@ -18,7 +18,7 @@ public class JupiterLogApp extends ResourceConfig {
 		packages("com.fasterxml.jackson.jaxrs.json");
 		register(io.swagger.jaxrs.listing.ApiListingResource.class);
 		register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-		//register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
+		register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
 		register(com.cmacgm.jupiterlog.jaxrs.log.LogResource.class);
 
 		io.swagger.jaxrs.config.BeanConfig beanConfig = new io.swagger.jaxrs.config.BeanConfig();

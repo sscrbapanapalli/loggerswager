@@ -32,16 +32,16 @@ public class CORSFilter implements javax.servlet.Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-		InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties");
+		/*InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties");
 		try {
 			configProp.load(in);
 		} catch (IOException e) {
 			throw new RuntimeException("config.properties not loaded properly");
-		}
+		}*/
 
-		String originHeader = null;
-		try {
-			originHeader = request.getRemoteAddr();
+		//String originHeader = null;
+		
+			/*originHeader = request.getRemoteAddr();
 	
 			if(!originHeader.isEmpty() && originHeader!=null){
 			String[] allowDomain = { configProp.getProperty("ip1"), configProp.getProperty("ip2"),
@@ -50,25 +50,26 @@ public class CORSFilter implements javax.servlet.Filter {
 
 				for (String domain : allowDomain) {
 
-					if (originHeader.equals(domain)) {
+					if (originHeader.equals(domain)) {*/
+		try {
 						request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
-						response.setHeader("Access-Control-Allow-Origin", originHeader);
+						response.setHeader("Access-Control-Allow-Origin","*");
 						response.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, OPTIONS, DELETE");
 						response.setHeader("Access-Control-Max-Age", "0");
 						response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						response.setHeader("Pragma", "no-cache");
 						response.setHeader("Access-Control-Allow-Headers", "x-requested-with");
-						break;
+					/*	break;
 					}
-				}
+				}*/
 				filterChain.doFilter(servletRequest, servletResponse);
-			}
 			
-			}else
-				throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
+			
+			/*}else
+				throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");*/
 		} catch (Exception ex) {
-
-			throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
+			throw new RuntimeException(ex.getMessage());
+			//throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
 		}
 
 	}
