@@ -1,5 +1,8 @@
 package com.cmacgm.jupiterlog.jaxrs.config;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import javax.ws.rs.ApplicationPath;
 
 import org.glassfish.jersey.server.ResourceConfig;
@@ -10,7 +13,7 @@ import org.glassfish.jersey.server.ResourceConfig;
  * @author Basker Ammu
  *
  */
-@ApplicationPath("rest")
+@ApplicationPath("/api")
 public class JupiterLogApp extends ResourceConfig {
 
 	public JupiterLogApp() {
@@ -18,13 +21,23 @@ public class JupiterLogApp extends ResourceConfig {
 		packages("com.fasterxml.jackson.jaxrs.json");
 		register(io.swagger.jaxrs.listing.ApiListingResource.class);
 		register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-		register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
+		//register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
 		register(com.cmacgm.jupiterlog.jaxrs.log.LogResource.class);
 
 		io.swagger.jaxrs.config.BeanConfig beanConfig = new io.swagger.jaxrs.config.BeanConfig();
-		beanConfig.setSchemes(new String[] { "http" });
-		beanConfig.setHost("10.13.44.80:8080");
-		beanConfig.setBasePath("/JupiterLog/rest");
+		beanConfig.setSchemes(new String[] { "http","https" });
+		 InetAddress ip;
+	     String hostname;
+	        try {
+	            ip = InetAddress.getLocalHost();
+	            hostname = ip.getHostAddress();
+	            beanConfig.setHost(hostname+":8080");
+
+	        } catch (UnknownHostException e) {
+	        	 beanConfig.setHost("locahost:8080");	           
+	        }
+		
+		beanConfig.setBasePath("/JupiterLog/api");
 		beanConfig.setResourcePackage("com.cmacgm.jupiterlog.jaxrs");
 		beanConfig.setScan(true);
 		beanConfig.setPrettyPrint(true);

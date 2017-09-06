@@ -31,7 +31,7 @@ import io.swagger.annotations.ApiResponses;
  * @author Basker Ammu
  *
  */
-@Path("log")
+@Path("/")
 @Api(value = "Jupiter Log", description = "Jupiter Log Service")
 public class LogResource {
 
@@ -149,10 +149,10 @@ public class LogResource {
 		response.resume(json.toString());
 	}*/
 	@POST
-	@Path("jupiterLog")
-	@ApiOperation(value = "jupiterLog method", notes = "This auth_token value and username should be used by the system for the logged in user to asynchronously post Log details to the Common Logging Framework")
+	@Path("postTransaction")
+	@ApiOperation(value = "postTransaction method", notes = "This should be invoked by user to asynchronously post Log details to the Common Logging Framework")
 	@ApiResponses(value = { @ApiResponse(code = 500, message = "An internal error occurred"),
-			@ApiResponse(code = 404, message = "username or auth_token not found from Header Details") })
+			@ApiResponse(code = 404, message = "No Data Found") })
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@ManagedAsync
@@ -181,8 +181,8 @@ public class LogResource {
 			if ((logVar != null)) {
 
 				Gson jsonObject = new Gson();
-			  if ((logVar.getApplicationName()!=null && logVar.getApplicationName()!="" && !logVar.getApplicationName().isEmpty() ) && (jupiterLogger.isInfoEnabled())) {
-					jupiterLogger.info(logVar.toString());
+			  if ((jupiterLogger.isInfoEnabled())) {					
+				  jupiterLogger.info(logVar.toString());
 					json.put("status", "success");
 					json.put("code", Response.Status.OK.getStatusCode());
 					json.put("message", "Log Inserted");
