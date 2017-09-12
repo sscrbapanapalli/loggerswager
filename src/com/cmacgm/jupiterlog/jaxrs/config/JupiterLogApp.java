@@ -9,7 +9,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 /**
  * Defines the components of the application.
- * 
+ * //UAT or Local change the IP address and PORT number @line  beanConfig.setHost("10.13.68.145:8080");
  * @author Basker Ammu
  *
  */
@@ -21,22 +21,12 @@ public class JupiterLogApp extends ResourceConfig {
 		packages("com.fasterxml.jackson.jaxrs.json");
 		register(io.swagger.jaxrs.listing.ApiListingResource.class);
 		register(io.swagger.jaxrs.listing.SwaggerSerializers.class);
-		//register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
+		register(com.cmacgm.jupiterlog.jaxrs.config.CORSFilter.class);
 		register(com.cmacgm.jupiterlog.jaxrs.log.LogResource.class);
 
 		io.swagger.jaxrs.config.BeanConfig beanConfig = new io.swagger.jaxrs.config.BeanConfig();
 		beanConfig.setSchemes(new String[] { "http","https" });
-		 InetAddress ip;
-	     String hostname;
-	        try {
-	            ip = InetAddress.getLocalHost();
-	            hostname = ip.getHostAddress();
-	            beanConfig.setHost(hostname+":8080");
-
-	        } catch (UnknownHostException e) {
-	        	 beanConfig.setHost("locahost:8080");	           
-	        }
-		
+	    beanConfig.setHost("10.13.68.145:8080"); //UAT or Local change the IP address and PORT number
 		beanConfig.setBasePath("/JupiterLog/api");
 		beanConfig.setResourcePackage("com.cmacgm.jupiterlog.jaxrs");
 		beanConfig.setScan(true);

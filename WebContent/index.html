@@ -37,8 +37,8 @@
 		if (url && url.length > 1) {
 			url = decodeURIComponent(url[1]);
 		} else {
-			url = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname.split('/')[1] + "/" + "api/swagger.json";
-			//url = "http://10.13.44.80:8080/JupiterLog/rest/swagger.json";
+			//url = window.location.protocol + "//" + window.location.host + "/" + window.location.pathname.split('/')[1] + "/" + "api/swagger.json";
+			url = "http://10.13.68.145:8080/JupiterLog/api/swagger.json"; //UAT or Local change the IP address with PORT number
 		}
 
 		// Pre load translate...
