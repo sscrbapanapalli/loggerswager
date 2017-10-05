@@ -23,8 +23,8 @@ public class JupiterLogApp extends ResourceConfig {
 
 		io.swagger.jaxrs.config.BeanConfig beanConfig = new io.swagger.jaxrs.config.BeanConfig();
 		beanConfig.setSchemes(new String[] { "http","https" });
-	    beanConfig.setHost("10.13.68.145:8080"); //UAT or Local change the IP address and PORT number
-	   // beanConfig.setHost("10.13.94.42:8080"); //UAT or Local change the IP address and PORT number
+	    beanConfig.setHost("10.13.70.154:8080"); //UAT or Local change the IP address and PORT number
+	    //beanConfig.setHost("10.13.94.42:8081"); //UAT or Local change the IP address and PORT number
 		beanConfig.setBasePath("/JupiterLog/api");
 		beanConfig.setResourcePackage("com.cmacgm.jupiterlog.jaxrs");
 		beanConfig.setScan(true);

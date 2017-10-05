@@ -32,26 +32,24 @@ public class CORSFilter implements javax.servlet.Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-		/*InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties");
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("config.properties");
 		try {
 			configProp.load(in);
 		} catch (IOException e) {
 			throw new RuntimeException("config.properties not loaded properly");
-		}*/
+		}
 
-		//String originHeader = null;
+		String originHeader = null;
 		
-			/*originHeader = request.getRemoteAddr();
-	
-			if(!originHeader.isEmpty() && originHeader!=null){
+			originHeader = request.getRemoteAddr();
+			try {
+			if(!originHeader.isEmpty() && originHeader!=null){				
 			String[] allowDomain = { configProp.getProperty("ip1"), configProp.getProperty("ip2"),
-					configProp.getProperty("ip3"), configProp.getProperty("ip4"), configProp.getProperty("ip5") };
+					configProp.getProperty("ip3"), configProp.getProperty("ip4"), configProp.getProperty("ip5"), configProp.getProperty("ip6"), configProp.getProperty("ip7"), configProp.getProperty("ip8"), configProp.getProperty("ip9"), configProp.getProperty("ip10")};
 			if (allowDomain.length > 0 && originHeader != null && !originHeader.isEmpty()) {
 
 				for (String domain : allowDomain) {
-
-					if (originHeader.equals(domain)) {*/
-		try {
+					if (originHeader.equals(domain)) {					
 						request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
 						response.setHeader("Access-Control-Allow-Origin","*");
 						response.setHeader("Access-Control-Allow-Methods", "POST");
@@ -60,17 +58,20 @@ public class CORSFilter implements javax.servlet.Filter {
 						response.setHeader("Pragma", "no-cache");				
 					    response.setHeader("Access-Control-Allow-Credentials", "true");			
 					    response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-					/*	break;
+						break;
 					}
-				}*/
-				filterChain.doFilter(servletRequest, servletResponse);
+				}
+				
 			
 			
-			/*}else
-				throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");*/
-		} catch (Exception ex) {
-			throw new RuntimeException(ex.getMessage());
-			//throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
+			}else
+				throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
+			}
+			filterChain.doFilter(servletRequest, servletResponse);
+			}
+		 catch (Exception ex) {
+			//throw new RuntimeException(ex.getMessage());
+			throw new RuntimeException("UnKnown host:" + originHeader + "  Permission Denied to Access Jupiter Log");
 		}
 
 	}

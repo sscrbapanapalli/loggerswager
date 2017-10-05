@@ -17,7 +17,6 @@ import org.glassfish.jersey.server.ManagedAsync;
 import org.json.JSONObject;
 
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 
 import io.swagger.annotations.Api;
@@ -180,9 +179,8 @@ public class LogResource {
 		try {
 			if ((logVar != null)) {
 
-				Gson jsonObject = new Gson();
 			  if ((jupiterLogger.isInfoEnabled())) {					
-				  jupiterLogger.info(logVar.toString());
+				    jupiterLogger.info(logVar.toString());
 					json.put("status", "success");
 					json.put("code", Response.Status.OK.getStatusCode());
 					json.put("message", "Log Inserted");
