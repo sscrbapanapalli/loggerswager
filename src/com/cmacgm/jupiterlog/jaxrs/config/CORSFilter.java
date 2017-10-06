@@ -40,12 +40,16 @@ public class CORSFilter implements javax.servlet.Filter {
 		}
 
 		String originHeader = null;
-		
-			originHeader = request.getRemoteAddr();
+		  
+			 if(request.getRemoteHost().equalsIgnoreCase(configProp.getProperty("ip11"))||request.getRemoteHost().equalsIgnoreCase(configProp.getProperty("ip12")))
+				originHeader =request.getRemoteHost();			
+			 else
+				 originHeader = request.getRemoteAddr();
+
 			try {
 			if(!originHeader.isEmpty() && originHeader!=null){				
 			String[] allowDomain = { configProp.getProperty("ip1"), configProp.getProperty("ip2"),
-					configProp.getProperty("ip3"), configProp.getProperty("ip4"), configProp.getProperty("ip5"), configProp.getProperty("ip6"), configProp.getProperty("ip7"), configProp.getProperty("ip8"), configProp.getProperty("ip9"), configProp.getProperty("ip10")};
+					configProp.getProperty("ip3"), configProp.getProperty("ip4"), configProp.getProperty("ip5"), configProp.getProperty("ip6"), configProp.getProperty("ip7"), configProp.getProperty("ip8"), configProp.getProperty("ip9"), configProp.getProperty("ip10"), configProp.getProperty("ip11"), configProp.getProperty("ip12")};
 			if (allowDomain.length > 0 && originHeader != null && !originHeader.isEmpty()) {
 
 				for (String domain : allowDomain) {
